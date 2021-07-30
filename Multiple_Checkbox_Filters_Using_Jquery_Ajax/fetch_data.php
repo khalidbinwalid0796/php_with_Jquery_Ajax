@@ -8,23 +8,27 @@ if(isset($_POST["action"]))
     
 
     //filtering data show
+    //slider
     if(isset($_POST["min_price"], $_POST["max_price"]) && !empty($_POST["min_price"]) && !empty($_POST["max_price"]))
     {
         $sql .= " AND product_price BETWEEN '".$_POST["min_price"]."' AND '".$_POST["max_price"]."'";
     }
     
+    //brand
     if(isset($_POST["brand"]))
     {
-        $brand_filter = implode("','", $_POST["brand"]);
+        $brand_filter = implode("','", $_POST["brand"]); //array converted into string
         $sql .= " AND product_brand IN('".$brand_filter."')";
     }
 
+    //ram
     if(isset($_POST["ram"]))
     {
         $ram_filter = implode("','", $_POST["ram"]);
         $sql .= " AND product_ram IN('".$ram_filter."')";
     }
 
+    //storage
     if(isset($_POST["storage"]))
     {
         $storage_filter = implode("','", $_POST["storage"]);

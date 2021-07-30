@@ -32,7 +32,7 @@
 				<div>
 					<h3>Brand</h3>
 					<?php
-						$sql = "SELECT product_brand FROM product";
+						$sql = "SELECT distinct product_brand FROM product";
 						$res=mysqli_query($con,$sql); 
 					?>
 
@@ -49,7 +49,7 @@
 				<div>
 					<h3>Ram</h3>
 					<?php
-						$sql = "SELECT product_ram FROM product";
+						$sql = "SELECT distinct product_ram FROM product";
 						$res=mysqli_query($con,$sql); 
 					?>
 
@@ -65,7 +65,7 @@
 				<div>
 					<h3>Internal Storage</h3>
 					<?php
-						$sql = "SELECT product_storage FROM product";
+						$sql = "SELECT distinct product_storage FROM product";
 						$res=mysqli_query($con,$sql); 
 					?>
 
@@ -99,10 +99,12 @@
 				var action = 'fetch_data';
 				var max_price = $('#hidden_maximum_price').val();
 				var min_price = $('#hidden_minimum_price').val();
+				//get_filter() a brand, ram, storage class name gulo pass korte hobe
 				var brand = get_filter('brand');
 				var ram = get_filter('ram');
 				var storage = get_filter('storage');
 				//console.log(min_price);
+				//brand,ram,storage are passed as array in fetch_data.php page
 				$.ajax({
 					url : "fetch_data.php",
 					method : "POST",
@@ -116,11 +118,12 @@
 			function get_filter(class_name){
 				var filter = [];
 				$('.'+class_name+':checked').each(function(){
-            		filter.push($(this).val());
-        		});
-        		return filter;
+					filter.push($(this).val());
+				});
+				return filter;
 			}
 
+			//checkbox a click korle filter_data() call hobe
 		    $('.common_selector').click(function(){
 		        filter_data();
 		    });
