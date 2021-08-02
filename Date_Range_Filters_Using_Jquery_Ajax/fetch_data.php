@@ -58,8 +58,8 @@
 	}
 
 	$output = array(
-		"draw"    => intval($_POST["draw"]),
-		"recordsTotal"  =>  get_all_data($con),
+		"draw"    => intval($_POST["draw"]), //why
+		"recordsTotal"  =>  get_all_data($con), //why
 		"recordsFiltered" => $number_filter_row, //Showing 1 to 10 of 120 entries
 		"data"    => $data
 	);
