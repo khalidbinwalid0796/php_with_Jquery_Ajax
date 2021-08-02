@@ -119,6 +119,7 @@
 				var filter = [];
 				$('.'+class_name+':checked').each(function(){
 					filter.push($(this).val());
+					//filter.push($(class_name).val()); //-->confusion
 				});
 				return filter;
 			}

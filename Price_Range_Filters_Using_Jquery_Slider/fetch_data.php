@@ -2,8 +2,13 @@
 
 /***
  * 
- * "" dile suru hole variable lekhar niom '".$_POST["max_price"]."' //query lekhar somoy
- * '' dile suru hole variable lekhar niom '$row['product_name']' //output korar somoy
+ * *** query lekhar somoy ***
+ * "" dile suru hole variable lekhar niom '".$_POST["max_price"]."';
+ * ' WHERE title LIKE "%'.str_replace(' ', '%', $_POST['search_query']).'%"'; //search ar somoy bese use hoy
+ * 'order_date BETWEEN "'.$_POST["start_date"].'" AND "'.$_POST["end_date"].'" AND '
+ * 
+ * *** output show korar somoy ***
+ * '' dile suru hole variable lekhar niom '$row['product_name']'
  *  $output =  '<div>
             <img src="images/'.$row['product_image'] .'" alt="" class="img-responsive" >
             <p align="center"><strong><a href="#">'.$row['product_name'].'</a></strong></p>
